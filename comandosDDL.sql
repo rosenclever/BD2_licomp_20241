@@ -47,4 +47,12 @@ create table clientes(
 alter table clientes
 add uf char(2) default 'RJ';
 
--- 
+-- ****** configurações do github
+-- definindo o usuario
+git init
+git config --global user.name "rosenclever"
+git config --global user.email "rosenclever@gmail.com"
+git add .
+git commit -m "aula do dia 14/03"
+git remote add origin https://github.com/rosenclever/BD2_licomp_20241.git
+git push -u origin master
