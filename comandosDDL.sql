@@ -1,3 +1,13 @@
+-- ****** configurações do github
+-- definindo o usuario
+git init
+git config --global user.name "rosenclever"
+git config --global user.email "rosenclever@gmail.com"
+git add .
+git commit -m "aula do dia 14/03"
+git remote add origin https://github.com/rosenclever/BD2_licomp_20241.git
+git push -u origin master
+
 -- acessando o mysql pelo terminal do xampp
 mysql -u root
 
@@ -47,12 +57,19 @@ create table clientes(
 alter table clientes
 add uf char(2) default 'RJ';
 
--- ****** configurações do github
--- definindo o usuario
-git init
-git config --global user.name "rosenclever"
-git config --global user.email "rosenclever@gmail.com"
-git add .
-git commit -m "aula do dia 14/03"
-git remote add origin https://github.com/rosenclever/BD2_licomp_20241.git
-git push -u origin master
+-- fixacao adicionar dia e mes aniversario
+alter table clientes
+add dia_niver int,
+add mes_niver int;
+
+desc clientes;
+
+-- fixação regras
+alter table clientes
+add constraint dias_ck check(dia_niver >= 1 and dia_niver <= 31),
+add constraint mes_ck check(mes_niver >= 1 and mes_niver <=12);
+
+-- fixacao produtos
+alter table produtos
+modify unidades varchar(50) default 'unidades';
+
