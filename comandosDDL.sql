@@ -8,6 +8,16 @@ git commit -m "aula do dia 14/03"
 git remote add origin https://github.com/rosenclever/BD2_licomp_20241.git
 git push -u origin master
 
+-- fazendo o backup do banco de dados
+-- deve estar na tela de login do mysql
+-- executar sempre ao final das aulas
+mysqldump -u root --databases bancodb > E:\rosen\BD2_licomp_20241\bkp280324.sql 
+
+-- para restaurar o backup de um banco de dados
+-- executar o comando a seguir de dentro do mysql
+-- executar este comando no início de cada aula
+source E:\rosen\BD2_licomp_20241\bkp280324.sql
+
 -- acessando o mysql pelo terminal do xampp
 mysql -u root
 
@@ -73,12 +83,40 @@ add constraint mes_ck check(mes_niver >= 1 and mes_niver <=12);
 alter table produtos
 modify unidades varchar(50) default 'unidades';
 
--- fazendo o backup do banco de dados
--- deve estar na tela de login do mysql
--- executar sempre ao final das aulas
-mysqldump -u root --databases bancodb > E:\rosen\BD2_licomp_20241\bkp280324.sql 
+-- correção dos exercícis dos slides 33 ao 35
+create database academico;
+use academico;
 
--- para restaurar o backup de um banco de dados
--- executar o comando a seguir de dentro do mysql
--- executar este comando no início de cada aula
-source E:\rosen\BD2_licomp_20241\bkp280324.sql
+create table instituicoes(
+    id integer not null,
+    constraint instituicoes_pk primary key(id),
+    nome varchar(100) not null,
+    email varchar(100) not null,
+    constraint inst_email_uq unique(email)
+);
+
+alter table instituicoes
+add uf char(2) default 'RJ';
+
+create table professores(
+    prof_matr integer(6) not null,
+    constraint professores_pk primary key(prof_matr),
+    prof_nome varchar(100) not null,
+    prof_email varchar(150) not null,
+    constraint prof_email_uq unique(prof_email),
+    prof_salario decimal(18,2),
+    constraint prof_salario_ck check(prof_salario > 700)
+);
+
+alter table professores
+add dia_niver int,
+add mes_niver int;
+
+alter table professores 
+add constraint professores_dia_niver_ck
+    check(dia_niver >= 1 and dia_niver <= 31),
+add constraint professores_mes_niver_ck
+    check(mes_niver >= 1 and mes_niver < 13);
+
+alter table professores
+add prof_cep char(7);
