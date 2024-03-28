@@ -77,3 +77,8 @@ modify unidades varchar(50) default 'unidades';
 -- deve estar na tela de login do mysql
 -- executar sempre ao final das aulas
 mysqldump -u root --databases bancodb > E:\rosen\BD2_licomp_20241\bkp280324.sql 
+
+-- para restaurar o backup de um banco de dados
+-- executar o comando a seguir de dentro do mysql
+-- executar este comando no início de cada aula
+source E:\rosen\BD2_licomp_20241\bkp280324.sql
