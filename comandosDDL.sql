@@ -11,7 +11,7 @@ git push -u origin master
 -- fazendo o backup do banco de dados
 -- deve estar na tela de login do mysql
 -- executar sempre ao final das aulas
-mysqldump -u root --databases bancodb > E:\rosen\BD2_licomp_20241\bkp280324.sql 
+mysqldump -u root --databases bancodb academico > E:\rosen\BD2_licomp_20241\bkp280324.sql 
 
 -- para restaurar o backup de um banco de dados
 -- executar o comando a seguir de dentro do mysql
