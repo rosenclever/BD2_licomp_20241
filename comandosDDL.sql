@@ -4,7 +4,7 @@ git init
 git config --global user.name "rosenclever"
 git config --global user.email "rosenclever@gmail.com"
 git add .
-git commit -m "aula do dia 14/03"
+git commit -m "aula do dia 08/08"
 git remote add origin https://github.com/rosenclever/BD2_licomp_20241.git
 git push -u origin master
 
