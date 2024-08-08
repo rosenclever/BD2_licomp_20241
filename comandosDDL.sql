@@ -55,6 +55,11 @@ create table agencias(
     constraint agencias_pk primary key(numero)
 );
 
+alter table agencias
+add constraint bancos_agencias_fk
+    foreign key(banco)
+    references bancos(numero);
+
 --criar a tabela clientes
 create table clientes(
     id int not null auto_increment,
