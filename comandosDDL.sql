@@ -74,7 +74,7 @@ add agencia varchar(100);
 alter table clientes
 add constraint agencias_clientes_fk
     foreign key(agencia)
-    references agencias(numer
+    references agencias(numero)
 
 -- criar a coluna uf do tipo char com tamanho 2 e valor padrão 'RJ' na tabela clientes
 alter table clientes
