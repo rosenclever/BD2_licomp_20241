@@ -68,6 +68,14 @@ create table clientes(
     constraint clientes_pk primary key(id)
 );
 
+alter table clientes
+add agencia varchar(100);
+
+alter table clientes
+add constraint agencias_clientes_fk
+    foreign key(agencia)
+    references agencias(numero);
+
 -- criar a coluna uf do tipo char com tamanho 2 e valor padrão 'RJ' na tabela clientes
 alter table clientes
 add uf char(2) default 'RJ';
@@ -125,3 +133,4 @@ add constraint professores_mes_niver_ck
 
 alter table professores
 add prof_cep char(7);
+
