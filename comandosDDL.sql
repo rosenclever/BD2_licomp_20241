@@ -92,6 +92,42 @@ alter table clientes
 add constraint dias_ck check(dia_niver >= 1 and dia_niver <= 31),
 add constraint mes_ck check(mes_niver >= 1 and mes_niver <=12);
 
+-- fixação
+-- tabela Paises
+create table Paises(
+    numero int not null,
+    nome varchar(50) not null,
+    constraint paises_pk primary key(numero)
+);
+
+-- relacionamento entre paises e bancos
+alter table bancos
+add pais int not null,
+add constraint paises_bancos_fk
+    foreign key(pais) references paises(numero);
+
+-- excluir relacionamento entre as tabelas Agencias e Clientes
+alter table clientes
+drop constraint agencias_clientes_fk;
+
+-- excluir a coluna agencia da tabela Clientes
+alter table clientes
+drop column agencia;
+
+-- criar a tabela contas com o relacionamento de Agencias e Clientes
+create table contas(
+    numero int not null auto_increment,
+    saldo decimal(17,2) not null,
+    limite decimal(17,2),
+    agencia varchar(100) not null,
+    cliente int not null,
+    constraint contas_pk primary key(numero),
+    constraint agencias_contas_fk
+        foreign key(agencia) references agencias(numero),
+    constraint clientes_contas_fk
+        foreign key(cliente) references clientes(id)
+);
+
 -- fixacao produtos
 alter table produtos
 modify unidades varchar(50) default 'unidades';
@@ -134,3 +170,20 @@ add constraint professores_mes_niver_ck
 alter table professores
 add prof_cep char(7);
 
+-- alterações no bancoDB
+
+-- 1) O limite da conta deve ter como valor padrão 100,00
+
+-- 2) O limite da conta não pode ser superior a 5000,00
+
+-- 3) Modifique o nome da tabela conta para ContaCorrente
+
+-- 4) Adicione a tabela Clientes o campo WhatsApp, do tipo char, tamanho 14, impedindo valores repetidos
+
+-- 5) Exclua os campos dia_niver e mes_niver da tabela Clientes
+
+-- 6) Adicione o campo data_de_nascimento na tabela clientes do tipo DateTime
+
+-- COMANDOS DML
+-- DML (Data Manipulation Language)
+-- Inserir (INSERT), Alterar (UPDATE), Excluir (DELETE), Consultar (SELECT)
