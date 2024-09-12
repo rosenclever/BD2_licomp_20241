@@ -187,3 +187,15 @@ add prof_cep char(7);
 -- COMANDOS DML
 -- DML (Data Manipulation Language)
 -- Inserir (INSERT), Alterar (UPDATE), Excluir (DELETE), Consultar (SELECT)
+
+-- inserir um país
+INSERT INTO PAISES(numero, nome)
+VALUES(10, 'Brasil');
+
+-- fixação cadastre o país Paraguai, com código 22
+INSERT INTO PAISES
+VALUES(22, 'Paraguai');
+
+-- cadastrar 3 bancos conforme solicitado no word
+INSERT INTO bancos
+VALUES(141, 'Itaú', 10);
