@@ -199,3 +199,39 @@ VALUES(22, 'Paraguai');
 -- cadastrar 3 bancos conforme solicitado no word
 INSERT INTO bancos
 VALUES(141, 'Itaú', 10);
+
+insert into bancos(pais, nome, numero)
+values(22, 'La Grana', 654);
+
+-- listar o nome de todos os bancos cadastrados
+select nome from bancos;
+
+-- cadastrar o banco bradesco
+INSERT INTO bancos
+VALUES(341, 'Bradesco', 10);
+
+-- listar o nome de todos bancos do Brasil cadastrados
+select nome from bancos
+where pais = 10;
+
+-- Listar o nome e o código de todos os bancos que não sejam do Brasil
+select nome, numero
+from bancos
+where pais <> 10;
+
+-- altere o nome do banco itaú para que fique sem acentuação
+update bancos
+set nome = 'Itau'
+where numero = 141;
+
+-- exclua todos os países cadastrados
+delete from paises;
+
+-- adicione o banco Real pertencente ao Paraguai
+insert into bancos
+values(342, 'Real', 22);
+
+-- liste o nome e o país de todos os bancos cujo nome inicie com a letra R e não pertença ao Brasil
+
+
+-- atualize o país de todos os bancos que possuem a letra E no nome para que pertençam a França
