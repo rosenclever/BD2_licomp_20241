@@ -232,6 +232,19 @@ insert into bancos
 values(342, 'Real', 22);
 
 -- liste o nome e o país de todos os bancos cujo nome inicie com a letra R e não pertença ao Brasil
-
+select nome, pais
+from bancos
+where nome like 'R%'
+and pais != 10;
 
 -- atualize o país de todos os bancos que possuem a letra E no nome para que pertençam a França
+insert into paises
+values(44, 'França');
+update bancos
+set pais = 44
+where nome like '%E%';
+
+-- liste o nome do banco e o nome do seu respectivo país
+select b.nome as "Banco", p.nome as "País"
+from bancos b inner join paises p
+on(b.pais = p.numero);
